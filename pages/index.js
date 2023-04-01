@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import toast from 'react-hot-toast';
+import { getCabList } from '@/service/api';
+import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { setCabData } from '@/redux/cabSlice';
+import { setUserData } from '@/redux/userSlice';
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const router = useRouter();
 
   const {
     register,
@@ -12,17 +19,18 @@ const Home = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data)
     if (data.pickup === data.destination) {
       return toast.error("Pickup and Destination can't be same");
     }
-    // try {
-    //   const res = await login(data);
-    //   router.push('/dashboard');
-    // } catch (err) {
-    //   // console.log(err);
-    //   toast.error(err?.response?.data?.msg || err?.message);
-    // }
+    try {
+      const res = await getCabList(data);
+      dispatch(setCabData(res.data));
+      dispatch(setUserData({ email: data.email, pickup: data.pickup, destination: data.destination }))
+      router.push('/choose');
+    } catch (err) {
+      console.log(err);
+      toast.error(err?.response?.data?.msg || err?.message);
+    }
   };
 
   return (
