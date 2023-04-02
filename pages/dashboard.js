@@ -35,7 +35,7 @@ const Dashboard = () => {
             </div>
 
             <div className='flex flex-wrap gap-4'>
-                {data.length > 0 && data?.map((item, index) => (
+                {data.length > 0 ? data?.map((item, index) => (
                     <div key={index} className='card w-96 bg-base-100 shadow-xl'>
                         <div className="card-body">
 
@@ -81,7 +81,7 @@ const Dashboard = () => {
 
                         </div>
                     </div>
-                ))}
+                )) : "No Booking Found"}
             </div>
         </div>
     )
