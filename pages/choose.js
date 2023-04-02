@@ -5,6 +5,7 @@ import 'reactflow/dist/style.css';
 import { useSelector } from "react-redux";
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const initialNodes = [
     {
@@ -122,7 +123,7 @@ const ChooseCab = () => {
             label: '35 min',
         },
         {
-            id: 'e5-6',
+            id: 'e5-1',
             source: '5',
             target: '1',
             type: 'straight',
@@ -157,11 +158,12 @@ const ChooseCab = () => {
     ];
 
     return (
-        <div className='flex items-center justify-center h-screen gap-20 max-w-7xl mx-auto pt-4'>
+        <div className='flex items-center justify-center min-h-screen lg:h-screen gap-20 max-w-7xl mx-auto pt-4 lg:flex-row flex-col'>
             <div className="w-full p-6 lg:w-1/3 flex flex-col gap-4 h-[90%] overflow-auto">
                 {cabs.map((cab, i) => <CabItems key={i} data={cab} />)}
             </div>
-            <div className="hidden lg:block lg:w-2/3 h-[80%]">
+
+            <div className="lg:w-2/3 w-full h-[80%]">
 
                 <div className='flex items-center justify-center gap-4 mb-10'>
                     <div className="stats shadow">
@@ -206,6 +208,12 @@ const ChooseCab = () => {
                         </div>
 
                     </div>
+
+                </div>
+                <div className='flex justify-center items-center mt-4'>
+                    <Link href="/dashboard">
+                        <button className='btn btn-primary'>View your Previous Bookings</button>
+                    </Link>
                 </div>
             </div>
         </div>

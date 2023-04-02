@@ -36,6 +36,7 @@ const Home = () => {
   return (
     <div className="flex items-center justify-center min-h-screen gap-20 max-w-7xl mx-auto">
       <div className="w-full p-6 lg:w-1/3">
+
         <a className="flex flex-col items-center gap-2 mb-6">
           <img
             alt="Logo"
@@ -48,6 +49,7 @@ const Home = () => {
         </a>
 
         <form onSubmit={handleSubmit(onSubmit)}>
+
           <div className="w-full form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -135,17 +137,12 @@ const Home = () => {
           </button>
         </form>
       </div>
-      <div className="hidden lg:block h-full lg:w-2/3">
-        <div className="relative flex items-center justify-center h-full overflow-hidden rounded-3xl bg-blue-50">
-          <h1 className="absolute z-10 font-black text-yellow-200 uppercase text-9xl top-16">
-            Login
-          </h1>
-          <img
-            alt="login"
-            src="/taxi.jpg"
-            className="z-20 object-cover w-2/3 rounded-3xl"
-          />
-        </div>
+      <div className="hidden lg:flex h-full lg:w-2/3 justify-center items-center">
+        <img
+          alt="login"
+          src="/taxi.jpg"
+          className="z-20 object-cover w-full rounded-3xl"
+        />
       </div>
     </div>
   );

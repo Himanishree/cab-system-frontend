@@ -10,5 +10,6 @@ const api = axios.create({
 
 export const getCabList = (data) => api.post('/api/cab-list', data);
 export const bookCab = (data) => api.post('/api/book-cab', data);
+export const getAllBookings = (data) => api.post('/api/get-all-bookings', data);
 
 export default api;
